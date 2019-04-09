@@ -47,10 +47,19 @@ style={{backgroundColor: 'red'}}
 - Reusability: Be able to reuse the code of them.
 - Configuration: Make them configurable.
 - To make components available in other files we need to ``export`` them.
+- Lifecycle: 
+  - ``constructor``: Created. Guidelines advice not to do data loading here.
+  - ``render``: Shown in the browser. Avoid doing anything but returning JSX code (No network, no heavy actions). Avoid doing conditional rendering.
+  - ``componentDidMount``: Called only the first time the component shows up.
+  - ``componentDidUpdate``: Called each time the component gets updated, right after the ``render`` method.
+  - ``componentWillUnmount``: Call only the last time before unmounting the component.
+
+  Others (rarely used ones): ``shouldComponentUdate``, ``getDerivedStateFromProps`` and ``getSnapshotBeforeUpdate``. 
 
 ## CSS and styling
 
 - Add CSS stylesheets by using a CDN in a ``link`` element inside the ``public/index.html``.
+- `${icon} test` is a string template, it will get whatever is inside (value) of ``icon`` and put it inside the screen.
 
 ## Props
 
@@ -59,6 +68,7 @@ System for passing data from a parent to a child component, with the goal of cus
 - The properties are set up as any other HTML property and can have any name/key.
 - The child can access them as the first argument of the function.
 - The child can be a component passed as an inner JSX component. It will appear in the parent as ``props.children``. These children can be plain text, JSX components, etc.
+- Defataul component props are in ``componentName.defaultProps{}``.
 
 ## State
 
