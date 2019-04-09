@@ -31,7 +31,8 @@ style={{backgroundColor: 'red'}}
 
 ### Troubleshooting
 
-*Objects are not valid as a React child** happens when you are trying to show a react object as text (inside a react component).
+- **Objects are not valid as a React child** happens when you are trying to show a react object as text (inside a react component).
+- **this** is the one that calls the function e.g. ``truck.getSound()``, this becomes ``truck``, and therefore every call to ``this`` inside the ``getSound()`` function will reference to ``truck``. If there is nothing calling the function (e.g. ``getSound()``) ``this`` will resolve to ``undefined``. This is the case in event handlers since inside JS the ``this`` specified during assignment of the handler is "ripped off" at some point calling the function without it (and causing the ``undefined`` error).
 
 ### Conventions
 
@@ -40,6 +41,8 @@ style={{backgroundColor: 'red'}}
 - Single quotes are used for non JSX properties (styles, etc.).
 - ``class`` changes by ``className``. ``class`` is a reserved keyword.
 - Components are located in a file with its same name. The name is writen in PascalCase.
+- Import statements for packages or libraries go above local files.
+- Component lists elements must have an **unique id**, in the **key** property, to ensure correct behaviour on reorder/update operations.
 
 ## Components
 
@@ -90,7 +93,36 @@ Contains some data only relevant to the component it is in.
 - Can use ``state`` --> Easier to handle user input.
 - Understand lifecycle events --> Easier to do start-up tasks.
 - When in need of callback results affecting what's displayed in the page.
+- Communication child-parent via callbacks passed via ``props``.
 
 ### Functional
 
 - Can use ``state`` only via ``hooks``.
+
+## Handling user input
+
+- When assigning a callback function in a JSX component we do not put the final ``()`` since that would make the function be called **each time the render function is called**.
+- Some callback events: ``onClick``, ``onChange``, ``onSumbit``.
+- ``Uncontrolled`` components stores the data outside the *React World* (e.g. in the HTML tag, meaning in the DOM), while ``controlled`` components store it inside the *React World* (e.g. the state object).
+- To avoid ``undefined`` errors due to context resolving of ``this``, we can ``bind`` a function in the constructor or using an arrow function (this latter ones have automatic binding).
+
+## REST requests
+
+- ``Axios`` is highly recommended over its lower lever competitor ``fetch``.
+- For asynchronous queries we can use the ``.then()`` when working with promises, or mark the function as ``async`` and use the ``await`` primitive.
+
+## ``map`` statements
+
+A ``map`` function will create a new array applying a function to each one of the elements of the calling array.
+
+``` JavaScript
+
+const numbers = [0, 1, 2, 3, 4];
+
+const mulNumbers = numbers.map( (num) => {
+    return num * 10;
+})
+
+// numbers = [0, 1, 2, 3, 4];
+// mulNumbers = [0, 10, 20, 30, 40];
+```
