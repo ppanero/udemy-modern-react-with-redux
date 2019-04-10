@@ -119,10 +119,26 @@ A ``map`` function will create a new array applying a function to each one of th
 
 const numbers = [0, 1, 2, 3, 4];
 
-const mulNumbers = numbers.map( (num) => {
+const mulNumbers = const mulNumbers = numbers.map( (num) => {
     return num * 10;
 })
 
 // numbers = [0, 1, 2, 3, 4];
 // mulNumbers = [0, 10, 20, 30, 40];
 ```
+
+Objects can also be flattened. Imagine the case of the object "Person" with attributes "name", "age" and "gender", in the arrow function we can specify only the ones needed and React will do the flattening form "Person" to these attributes.
+
+``` JavaScript
+people.map( ({name, age}) => {
+    return new Person(name.toUpperCase(), age/10, "No Gender")
+})
+```
+
+## ``Refs``
+
+React ``Refs`` - References - give access to a single DOM element.
+
+1. Create refes in the constructor.
+2. Assign them to instance variables.
+3. Pass to a particular JSX element as props.
