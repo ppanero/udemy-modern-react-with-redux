@@ -33,6 +33,7 @@ style={{backgroundColor: 'red'}}
 
 - **Objects are not valid as a React child** happens when you are trying to show a react object as text (inside a react component).
 - **this** is the one that calls the function e.g. ``truck.getSound()``, this becomes ``truck``, and therefore every call to ``this`` inside the ``getSound()`` function will reference to ``truck``. If there is nothing calling the function (e.g. ``getSound()``) ``this`` will resolve to ``undefined``. This is the case in event handlers since inside JS the ``this`` specified during assignment of the handler is "ripped off" at some point calling the function without it (and causing the ``undefined`` error).
+- If a function is getting called everytime instead of once some event happens, it has to be transformed into an arrow function ``() => {}``.
 
 ### Conventions
 
@@ -110,6 +111,7 @@ Contains some data only relevant to the component it is in.
 
 - ``Axios`` is highly recommended over its lower lever competitor ``fetch``.
 - For asynchronous queries we can use the ``.then()`` when working with promises, or mark the function as ``async`` and use the ``await`` primitive.
+- ``params`` are additive. You can define some in the ``create`` squeleton and some in the request itself.
 
 ## ``map`` statements
 
