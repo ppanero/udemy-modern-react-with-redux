@@ -44,6 +44,13 @@ style={{backgroundColor: 'red'}}
 - Components are located in a file with its same name. The name is writen in PascalCase.
 - Import statements for packages or libraries go above local files.
 - Component lists elements must have an **unique id**, in the **key** property, to ensure correct behaviour on reorder/update operations.
+- ``...`` is a flattening operation, similar to ``**`` in Python.
+  ``` JavaScript
+  arrayOne = [1, 2, 3]
+  arrayTwo = [...arrayOne, 4]
+  console.log(arrayTwo) --> [1, 2, 3, 4]
+  ```
+- 
 
 ## Components
 
@@ -144,3 +151,22 @@ React ``Refs`` - References - give access to a single DOM element.
 1. Create refes in the constructor.
 2. Assign them to instance variables.
 3. Pass to a particular JSX element as props.
+
+## Redux
+
+Redux is a state management library
+
+### Redux Cycle
+
+``Action Creator`` --> ``Action`` --> ``Dispatch`` --> ``Reducers`` --> ``State``
+
+- Action Creator: Person dropping of the form. 
+- Action: The form.
+- Dispatch: The form receiver. Will make copies of the form and send it to each department (reducers).
+- Reducers: The departments that choose what actions to perform.
+- State: The compiled department, in a central repository of data.
+
+### Conventions
+
+- Types are written in capital letters, with underscores instead of spaces and avoiding prepositions.
+- Always return new elements in a reducer, never modify existing data (e.g. never do ``array.push(newElement)`` since it would modify the source array).
