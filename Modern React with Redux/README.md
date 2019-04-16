@@ -50,7 +50,7 @@ style={{backgroundColor: 'red'}}
   arrayTwo = [...arrayOne, 4]
   console.log(arrayTwo) --> [1, 2, 3, 4]
   ```
-- 
+- When importing, if no file is specified the ``index`` in the root of the directory will be called.
 
 ## Components
 
@@ -161,7 +161,7 @@ Redux is a state management library
 ``Action Creator`` --> ``Action`` --> ``Dispatch`` --> ``Reducers`` --> ``State``
 
 - Action Creator: Person dropping of the form. 
-- Action: The form.
+- Action: The form. Must have a ``type``, can optionally contain a ``payload``.
 - Dispatch: The form receiver. Will make copies of the form and send it to each department (reducers).
 - Reducers: The departments that choose what actions to perform.
 - State: The compiled department, in a central repository of data.
@@ -170,3 +170,23 @@ Redux is a state management library
 
 - Types are written in capital letters, with underscores instead of spaces and avoiding prepositions.
 - Always return new elements in a reducer, never modify existing data (e.g. never do ``array.push(newElement)`` since it would modify the source array).
+
+### React
+
+- In order to use Redux inside React we make use of the ``provider`` component and the ``connect`` function.
+- When calling ``connect`` we need a second pair of parenthesis in order to call the function returned by it. E.g. ``connect()()``.
+-``mapStateToProps`` is called as is by convention.
+- ``action creators`` are plain JS functions, but they need to be "dispatched" in order to affect the Redux ``store``. However, by passing the function to ``connect``, it will all happened behind the scenes allowing us to use the function as a normal one.
+
+### Structure
+
+- ``actions`` folder
+- ``reducers`` folder
+- ``components`` folder
+- ``index.js`` file
+
+## Exporting
+
+Named exports, i.e. placing ``export`` before the definition of a function, allows to export multiple components/functions from a single file. Meaning there is no need for ``default``.
+
+Named imports need ``{ namedComponent }``.
