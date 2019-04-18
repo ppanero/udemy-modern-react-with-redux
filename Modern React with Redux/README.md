@@ -156,14 +156,24 @@ React ``Refs`` - References - give access to a single DOM element.
 
 Redux is a state management library
 
+- ``redux-thunk`` allows us to perform API queries from the Redux side of our app. Sets two rules:
+  - Action Creators **can** return action objects with a *type* property and an optional *payload*.
+  - Action Creators **can** return functions. It will be called by ``redux-thunk`` automatically, the action will be re-dispatched later on **manually**.
+- ``_.memoize`` takes a function (``_.memoize(functionNameWithoutParenthesis)``) and will return a copy of the passed function but we will call it one time per unique set of arguments. Afterwards it will return the already gotten result. Somehow like a argument value dependent singleton.
+
 ### Redux Cycle
 
-``Action Creator`` --> ``Action`` --> ``Dispatch`` --> ``Reducers`` --> ``State``
+``Action Creator`` --> ``Action`` --> ``Dispatch`` --> ``Middleware`` --> ``Reducers`` --> ``State``
 
-- Action Creator: Person dropping of the form. 
-- Action: The form. Must have a ``type``, can optionally contain a ``payload``.
+- Action Creator: Person dropping of the form.
+- Action: The form. Must have a ``type``, can optionally contain a ``payload``. **Must be plain objects**, they can not perform any other (async) actions for that it should use ``redux middlewares``. 
 - Dispatch: The form receiver. Will make copies of the form and send it to each department (reducers).
-- Reducers: The departments that choose what actions to perform.
+- Middleware: Has the ability to stop, modify or otherwise mess around with the actions before they are reduced.
+- Reducers: The departments that choose what actions to perform. Rules:
+  - Might return anything but ``undefined``.
+  - The very first time a reducer is invoked the arguments might be ``undefined``, therefore we should default them to ``null``, empty array, etc.
+  - It is supposed to return a value based on the previous state and the action. It **must not perform any other action** (e.g. netowrk request or similar).
+  - The rule of thumb is "**Must not mutate** the input argument ``state``. It must set up a new state using the ``setState`` function." This is due to a comparisson performed in *redux/src/combineReducers/~#174* where the old state key is compared to the new. If both states are equal in memory position (i.e. ``!===`` returns false), redux will return the old state and will not notify the components to re-render. Conclusion "**Avoid ``return state;``** and use operation with ``...``, ``Lodash (_)`` library and ``filter or map`` instead of ``pop, push and index assignment``. Note that operations are applied in order, this is of special importance when using ``...``.
 - State: The compiled department, in a central repository of data.
 
 ### Conventions
