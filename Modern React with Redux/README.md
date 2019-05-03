@@ -200,3 +200,21 @@ Redux is a state management library
 Named exports, i.e. placing ``export`` before the definition of a function, allows to export multiple components/functions from a single file. Meaning there is no need for ``default``.
 
 Named imports need ``{ namedComponent }``.
+
+## React Router Dom
+
+Installing ``react-router-dom``
+
+It works as a ``switch`` of React components depending on the URL path, it does not care about the domain and port (takes everything after the TLD/port). Have to be carefully **one rule can match more than one rule/route** displaying all possible components. By default  it executes a ``contains`` operation.
+
+It contains, internally, a ``History`` object to allow to keep track of the address bar in the browser.
+
+*WARNING* Do not use anchor tags with react-router, it will load a new page and dump all React/Redux state data. Use the ``<Link to={}>to link</link>`` component instead.
+
+The user will load an unique HTML document which will be re-rendered depending on the navigation path he takes. However, it will never re-load (query & dump state) the website.
+
+Types:
+
+- BroweserRouter
+- HashRouter: The server will always be wquery nd returned the ``/`` (``index.html``) and everything after the ``#`` will be taken care of by the client.
+- MemoryRouter
