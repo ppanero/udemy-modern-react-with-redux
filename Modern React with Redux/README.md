@@ -165,7 +165,7 @@ Redux is a state management library
 
 ``Action Creator`` --> ``Action`` --> ``Dispatch`` --> ``Middleware`` --> ``Reducers`` --> ``State``
 
-- Action Creator: Person dropping of the form.
+- Action Creator: Person dropping of the form. Tip: Use a ``types.js`` file to avoid mispelling mistakes along the program.
 - Action: The form. Must have a ``type``, can optionally contain a ``payload``. **Must be plain objects**, they can not perform any other (async) actions for that it should use ``redux middlewares``. 
 - Dispatch: The form receiver. Will make copies of the form and send it to each department (reducers).
 - Middleware: Has the ability to stop, modify or otherwise mess around with the actions before they are reduced.
