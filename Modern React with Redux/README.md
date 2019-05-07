@@ -51,6 +51,7 @@ style={{backgroundColor: 'red'}}
   console.log(arrayTwo) --> [1, 2, 3, 4]
   ```
 - When importing, if no file is specified the ``index`` in the root of the directory will be called.
+- Semantic UI hides error messages by default. We have to add the class name "error" to the component in order for them to be shown.
 
 ## Components
 
@@ -160,6 +161,8 @@ Redux is a state management library
   - Action Creators **can** return action objects with a *type* property and an optional *payload*.
   - Action Creators **can** return functions. It will be called by ``redux-thunk`` automatically, the action will be re-dispatched later on **manually**.
 - ``_.memoize`` takes a function (``_.memoize(functionNameWithoutParenthesis)``) and will return a copy of the passed function but we will call it one time per unique set of arguments. Afterwards it will return the already gotten result. Somehow like a argument value dependent singleton.
+- ``Redux Devtools`` allows to debug very easily Redux and its values/status.
+- ``Redux Form``: It has many templates to make it easy.
 
 ### Redux Cycle
 
@@ -179,6 +182,8 @@ Redux is a state management library
 ### Conventions
 
 - Types are written in capital letters, with underscores instead of spaces and avoiding prepositions.
+- React components that can be shown on the screen start by capital letters.
+- Functions are named in camel case starting by lowercase.
 - Always return new elements in a reducer, never modify existing data (e.g. never do ``array.push(newElement)`` since it would modify the source array).
 
 ### React
