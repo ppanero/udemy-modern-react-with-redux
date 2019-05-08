@@ -4,6 +4,14 @@
 
 - Code: https://github.com/StephenGrider/redux-code
 
+## Helpful tools
+
+- ``json-server`` allows to create a dummy REST API returning JSON data from the ``db.json`` file (set up by us). For that change the ``package.json`` script to:
+    ``` json
+        "scripts": {
+            "start": "json-server -p 3001 -w db.json"
+        },
+    ```
 
 ## Concepts
 
@@ -190,7 +198,7 @@ Redux is a state management library
 
 - In order to use Redux inside React we make use of the ``provider`` component and the ``connect`` function.
 - When calling ``connect`` we need a second pair of parenthesis in order to call the function returned by it. E.g. ``connect()()``.
--``mapStateToProps`` is called as is by convention.
+-``mapStateToProps`` is called as is by convention. It receives two arguments ``state`` and ``ownProps``, the first is the global state and the second is the props of the class/functional component. 
 - ``action creators`` are plain JS functions, but they need to be "dispatched" in order to affect the Redux ``store``. However, by passing the function to ``connect``, it will all happened behind the scenes allowing us to use the function as a normal one.
 
 ### Structure
@@ -223,3 +231,14 @@ Types:
 - BroweserRouter
 - HashRouter: The server will always be wquery nd returned the ``/`` (``index.html``) and everything after the ``#`` will be taken care of by the client.
 - MemoryRouter
+
+*WARNING* accessing the history object is quite complicated, therefore if our application needs programmatic navigation we have to create and manage our custom ``history`` object. For this reason we will not use the ``BrowserRouter`` but a generic one. Then we can ``history.push'/new/path'``.
+
+To create pages based on item data we can:
+- Create a selectionReducer and record which item is being needed.
+- Put the ID of the item in the URL (``URL-Based navigation``).
+
+The second option is preferable. For that we just have to add ``:<name_of_the_param>`` in the routing configuration (in ``App.js``).
+
+The points to take into account for this case are:
+- Every component should work by itslef (i.e. fetch its own data). It **must not depend on previous loaded data** (i.e. app state).
