@@ -1,0 +1,20 @@
+{
+  "streams": [
+    {
+      "title": "Stream v3",
+      "description": "This stream has an user ID edited",
+      "id": 5
+    },
+    {
+      "title": "Improve navigation II",
+      "description": "This should go back to home - Edit",
+      "id": 6
+    },
+    {
+      "title": "Refactored correclty",
+      "description": "This is a stream created form a refactored form - PATCH",
+      "userId": "102128962614435811617",
+      "id": 7
+    }
+  ]
+}
