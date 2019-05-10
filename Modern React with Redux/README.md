@@ -218,7 +218,7 @@ Named imports need ``{ namedComponent }``.
 
 Installing ``react-router-dom``
 
-It works as a ``switch`` of React components depending on the URL path, it does not care about the domain and port (takes everything after the TLD/port). Have to be carefully **one rule can match more than one rule/route** displaying all possible components. By default  it executes a ``contains`` operation.
+It works as a ``switch`` of React components depending on the URL path, it does not care about the domain and port (takes everything after the TLD/port). Have to be carefully **one rule can match more than one rule/route** displaying all possible components. By default  it executes a ``contains`` operation. ``Switch`` would make it only show the first matched route.
 
 It contains, internally, a ``History`` object to allow to keep track of the address bar in the browser.
 
