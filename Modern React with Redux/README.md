@@ -242,3 +242,17 @@ The second option is preferable. For that we just have to add ``:<name_of_the_pa
 
 The points to take into account for this case are:
 - Every component should work by itslef (i.e. fetch its own data). It **must not depend on previous loaded data** (i.e. app state).
+
+### React Portals
+
+A portal allows us to render an element as a child of some element of the DOM structure, usually the body. This would help to circumvent all the stacking (``z-index``) problems that setting up a model implies.
+
+Useful for:
+- Modals
+- Render React components in a server side application (i.e. on an element that wasn't created by our application).
+
+It is a good practice to create a sibling ``div`` to ``root`` to attach the modals to, in the index file. If they are attached directly to ``root`` its content will be overwritten.
+
+## Troubleshooting
+
+- Events are propagated to the parents if the child does not have an event handler. For example in the modals, use ``stopPropagation`` to solve this issue.

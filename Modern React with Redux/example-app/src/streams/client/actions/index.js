@@ -43,6 +43,8 @@ export const deleteStream = (id) => async (dispatch) => {
         type: DELETE_STREAM,
         payload: id
     })
+
+    history.push('/')
 };
 
 // Use PATCH to avoid loosing userId and stream ID.
