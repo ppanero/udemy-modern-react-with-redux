@@ -255,6 +255,8 @@ It is a good practice to create a sibling ``div`` to ``root`` to attach the moda
 
 ### Context
 
+**warning** It is not recommended to replace ``Redux`` with ``Context``. However, for trivial applications that only need some data flowing, it could suffice (and therefore be appropriate).
+
 With the ``props`` system we can pass data from parent to child. With the ``context`` system we can pass data from a parent to any nested child.
 
 There are two ways of getting data inside and outside the context.
@@ -276,3 +278,5 @@ Ouput:
 ## Troubleshooting
 
 - Events are propagated to the parents if the child does not have an event handler. For example in the modals, use ``stopPropagation`` to solve this issue.
+
+- Callback functions have to be defined as arrow funtions to be able to be hooked and mantain the corresponding context (e.g. reference to ``this``).
