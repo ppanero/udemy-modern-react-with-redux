@@ -253,6 +253,26 @@ Useful for:
 
 It is a good practice to create a sibling ``div`` to ``root`` to attach the modals to, in the index file. If they are attached directly to ``root`` its content will be overwritten.
 
+### Context
+
+With the ``props`` system we can pass data from parent to child. With the ``context`` system we can pass data from a parent to any nested child.
+
+There are two ways of getting data inside and outside the context.
+
+Input:
+- Default data upon definition.
+- Create a ``Provider`` object that can push data into de context object. To use a ``Provider`` we have con encapsulate the parent-most compoenent and pass as ``value`` property the data that we wish to pass along (ej. userCreator/App.js). An element can be wrapped in as many providers as needed.
+
+**Warning** Each usage of the context provider object creates a completely separated "pipe" of information. Therefore, a data value update has to be send through every pipe.
+
+Ouput:
+- Default data by referencing ``this.context``. In the children we need to hook up the context first (``static`` makes it a class property and ``contextType`` is a reserved keyword).
+
+``` JavaScript
+    static contextType = NameOfTheContextComponent;
+```
+- Create a ``Consumer`` object that can pull data from the context object. To use a ``Consumer`` we have to pass a "child" to it. This child is always going to be a function, will be called automatically with the current value in the pipe. Consumer are used when we need to access more than one context, since by refere we can only access one: ``this.context``.
+
 ## Troubleshooting
 
 - Events are propagated to the parents if the child does not have an event handler. For example in the modals, use ``stopPropagation`` to solve this issue.
