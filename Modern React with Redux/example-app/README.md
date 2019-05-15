@@ -1,6 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 - [commentList](./src/commentList): Use of functional components.
+- [hooksSimple](./src/hooksSimple): Use of ``hooks`` to use only function-based objects.
 - [imageSearch](./src/imageSearch): Query and operate ``APIs``.
 - [insuranceCompany](./src/insuranceCompany): Use of plain ``redux``.
 - [jsx.js](./src/jsx.js): Use of JSX components.
@@ -8,4 +9,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [seasonDisplay](./src/class): Use of class components and state system.
 - [songSelector](./src/songSelector): More on using ``react-redux``.
 - [streams](./src/streams): Use of ``react-router``, ``redux-form``, authentication, navigation, CRUD operations and error handling.
+- [userCreator](./src/userCreator): Use of ``Context`` instead of ``Redux``.
 - [youtubeBrowser](./src/youtubeBrowser): More on ``react-redux`` and ``redux-thunk``.

@@ -116,6 +116,22 @@ Contains some data only relevant to the component it is in.
 
 - Can use ``state`` only via ``hooks``.
 
+#### Hooks
+
+- Add ``state`` and ``lifecycle methods`` to function-based components.
+- Make it wasy to share logic between components.
+
+We can import functions from React that allow the use of the class systems (``useState``, ``useEffect`` for lifecycle methods, ``useContext``, ``useRef``, ``useReducer``)
+
+For example, the following code would allow us to set the state for key ``key`` by calling the function ``setKey``. By default we are giving it the value ``value``.
+
+``` JavaScript
+    const [key, setKey] = useState('value')
+```
+In addition, we do not have to take care about the full state object, we do it in a per state value manner. Each call to ``useState`` will only receive a value.
+
+``useEffect`` works at the same time as ``componentDidUpdate`` and ``componentDidMount``. The second parameter (array) is used as a flag/check to know when the function should be called. In order to use it as ``componentDidMount`` it should be set to ``[]`` (empty array). React will compare those object's memory position for equality. 
+
 ## Handling user input
 
 - When assigning a callback function in a JSX component we do not put the final ``()`` since that would make the function be called **each time the render function is called**.
@@ -280,3 +296,4 @@ Ouput:
 - Events are propagated to the parents if the child does not have an event handler. For example in the modals, use ``stopPropagation`` to solve this issue.
 
 - Callback functions have to be defined as arrow funtions to be able to be hooked and mantain the corresponding context (e.g. reference to ``this``).
+- Do not call ``setState`` inside ``componentDidUpdate`` because it will trigger a component update, resulting in an endless update/component re-render loop. This can be fixed by adding a check using ``prevProps``.
