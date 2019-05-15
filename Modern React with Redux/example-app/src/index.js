@@ -1,1 +1,1 @@
-import './streams/client';
+import './<application_folder_name>';
