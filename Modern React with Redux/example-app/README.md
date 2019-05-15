@@ -1,6 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 - [commentList](./src/commentList): Use of functional components.
+- [hooksSeasonDisplay](./src/hooksSeasonDisplay): Rewrite of the season display app using hooks and function-based components.
 - [hooksSimple](./src/hooksSimple): Use of ``hooks`` to use only function-based objects.
 - [imageSearch](./src/imageSearch): Query and operate ``APIs``.
 - [insuranceCompany](./src/insuranceCompany): Use of plain ``redux``.
